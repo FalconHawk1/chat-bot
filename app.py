@@ -46,7 +46,7 @@ def save_reservation():
 
     name = data.get("¿Cual es tu nombre?")
     age = data.get("¿Cuantos años tienes?")
-    gender = data.get("¿Cual es tu genero?")
+    gender = data.get("¿Cual es el servicio que quieres reservar?")
     time = data.get("¿A que hora quieres reservar?")
     date = data.get("¿Cuando quieres agendar la cita?")
 

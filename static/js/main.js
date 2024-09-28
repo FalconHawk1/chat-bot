@@ -26,14 +26,13 @@ function askQuestion() {
     chatContent.innerHTML += `
         <div class="bot-message flex items-center bg-blue-600 text-accent p-2 rounded-lg my-1">
             <i class="ri-robot-line mr-2"></i>
-            ${response}
             ${questions[questionIndex]}
         </div>`;
     scrollToBottom();
 }
 
 function sendMessage() {
-    const userInput = document.getElementById('userInput').value.trim();
+    const userInput = document.getElementById('userInput').value;
     const chatContent = document.getElementById('chatContent');
 
     if (userInput.trim() === '') return;
@@ -43,19 +42,8 @@ function sendMessage() {
             <i class="ri-user-line mr-2"></i>
             ${userInput}
         </div>`;
-
-    const matchedQuestion = serviceQuestions.find(q => userInput.toLowerCase().includes(q.intent.toLowerCase()));
     
-    if (matchedQuestion) {
-        currentIntent = matchedQuestion.intent;
-        setTimeout(() => {
-            askQuestion(matchedQuestion.responses[0]);
-        }, 1000);
-    } else {
-        askQuestion("No he entendido su pregunta. ¿Puede reformularla?");
-    }
-
-    /*answers[questions[questionIndex]] = userInput;
+    answers[questions[questionIndex]] = userInput;
 
     document.getElementById('userInput').value = '';
 
@@ -64,7 +52,7 @@ function sendMessage() {
         setTimeout(askQuestion, 1000);
     } else {
         setTimeout(reservation, 1000);
-    }*/
+    }
 
     scrollToBottom();
 }
