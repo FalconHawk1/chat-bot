@@ -296,13 +296,26 @@
             </div>
             <div class="mt-2">
                 <input type="text" id="userInput" placeholder="Escribe un mensaje..."
-                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg">
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
+                    onkeypress="if(event.key === 'Enter'){ sendMessage(); }">
                 <button onclick="sendMessage()" class="btn-input mt-2 w-full" style="color: white; background-color: rgb(41 47 54);">
                     Send
                 </button>
             </div>
         </div>
         </main>
+
+         <!-- graficas -->
+         <div class="graficas mt-8 xl:mt-20 relative z-20 min-h-screen">
+            <div class="container flex flex-row justify-center items-center h-full mx-auto">
+                <button class="btn btn-primary mt-8 mb-8">
+                    <a href="https://lookerstudio.google.com/u/0/reporting/05340673-9803-4a57-af80-04fd0f6d0b84/page/DlPDE" target="_blank">Revisar estadísticas</a>
+                    <i class="ri-bar-chart-box-line text-accent"></i>
+                </button>
+            </div>
+        </div>
+        </main>
+
 
     <!-- footer -->
     <footer class="footer p-1 mt-[75px] xl:mt-[150px] relative z-20">
