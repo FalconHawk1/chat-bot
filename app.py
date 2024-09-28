@@ -46,17 +46,17 @@ def save_reservation():
 
     name = data.get("¿Cual es tu nombre?")
     age = data.get("¿Cuantos años tienes?")
-    gender = data.get("¿Cual es el servicio que quieres reservar?")
+    service = data.get("¿Cual es el servicio que quieres reservar?")
     time = data.get("¿A que hora quieres reservar?")
     date = data.get("¿Cuando quieres agendar la cita?")
 
-    if not name or not age or not gender or not time or not date:
+    if not name or not age or not service or not time or not date:
         return jsonify({"error": "Missing required fields"}), 400
 
     # Save data to MySQL
     cursor = db.cursor()
-    query = "INSERT INTO spa_reservaciones (nombre, edad, servicio_solicitado, fecha_reservacion, hora_reservacion) VALUES (%s, %s, %s, %s, %s)"
-    values = (name, age, gender, time, date)
+    query = "INSERT INTO spa_reservaciones (nombre, edad, servicio_solicitado, hora_reservacion, fecha_reservacion) VALUES (%s, %s, %s, %s, %s)"
+    values = (name, age, service, time, date)
     cursor.execute(query, values)
     db.commit()
 
@@ -64,7 +64,7 @@ def save_reservation():
     tx_hash = contract.functions.registerReservation(
         name,
         age,
-        gender,
+        service,
         time,
         date
     ).transact({'from': w3.eth.accounts[0]})
@@ -74,7 +74,7 @@ def save_reservation():
         "data": {
             "name": name,
             "age": age,
-            "gender": gender,
+            "service": service,
             "time": time,
             "date": date
         }
