@@ -1,0 +1,15 @@
+﻿Categoria;Mensaje;Respuesta
+saludo;Hola;Bienvenido a su servicio de spa.
+saludo;hola;Bienvenido a su servicio de spa.
+saludo;Buenos Dias;Bienvenido a su servicio de spa.
+saludo;Buenas Tardes;Bienvenido a su servicio de spa.
+ServiciosOfrecidos;Deseo conocer los servicios que ofrece el spa?;Claro: nuestros servicios son: Manicure, pedicura, tratamiento facial, tratamiento capilar, masajes, exfoliacion.
+ServiciosOfrecidos;Tiene servicios para parejas?;Nuestros servicios se ofrecen para cliente individuales, para parejas y para grupos.
+Horarios;Quiero saber los horarios de atención;Los horarios de atención son Lunes a Sábado de 10:00 a.m a 8:00 p.m. y los Domingos de 10:00 a.m a 6:00 p.m.
+Reservas;Quiero hacer una reserva;Para continuar con la reserva, indícame tu nombre para proseguir.
+Reservas;Manicure;El servicio Manicure lo puede reservar en cualquiera de nuestros horarios de atención.
+Reservas;Pedicure;El servicio Pedicure lo puede reservar en cualquiera de nuestros horarios de atención.
+Reservas;Tratamiento facial;El Tratamiento Facial lo puede reservar en cualquiera de nuestros horarios de atención.
+Reservas;Tratamiento Capilar;El Tratamiento Capilar se ofrece de Lunes a Viernes de 10:00 a.m a 6:00 p.m.
+Reservas;Masajes;Los Masajes se ofrecen de Lunes a Viernes de 10:00 a.m a 6:00 p.m.
+Reservas;Masaje;Los Masajes se ofrecen de Lunes a Viernes de 10:00 a.m a 6:00 p.m.

@@ -16,17 +16,17 @@ db = mysql.connector.connect(
 
 # Blockchain connection (Ethereum testnet via Infura or local node)
 #w3 = Web3(Web3.HTTPProvider('https://rinkeby.infura.io/v3/YOUR_INFURA_PROJECT_ID'))  # Replace with your Ethereum node provider
-w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
-contract_address = '0x07f0FCC8fa92f3DAFa454a097A7b988092Ca0909'  # Replace with your deployed contract address
+#w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
+#contract_address = '0x07f0FCC8fa92f3DAFa454a097A7b988092Ca0909'  # Replace with your deployed contract address
 
 # Load contract ABI (replace with your contract's ABI)
-with open('contract_abi.json', 'r') as f:
-    contract_abi = json.load(f)
+#with open('contract_abi.json', 'r') as f:
+ #   contract_abi = json.load(f)
 
-contract = w3.eth.contract(address=contract_address, abi=contract_abi)
+#contract = w3.eth.contract(address=contract_address, abi=contract_abi)
 
 # Load questions from CSV
-questions = pd.read_csv('questions.csv')
+questions_df = pd.read_csv('preguntas-respuestas.csv', delimiter=';')
 
 @app.route('/', methods=['GET'])
 def home():
@@ -35,7 +35,9 @@ def home():
 
 @app.route('/getQuestions', methods=['GET'])
 def get_questions():
-    return jsonify(questions.to_dict(orient='records'))
+    # Convert the CSV to a list of dictionaries for easier handling in JavaScript
+    questions_list = questions_df.to_dict(orient='records')
+    return jsonify(questions_list)
 
 
 @app.route('/reservation', methods=['POST'])
@@ -44,11 +46,11 @@ def save_reservation():
     if not data:
         return jsonify({"error": "No data provided"}), 400
 
-    name = data.get("¿Cual es tu nombre?")
-    age = data.get("¿Cuantos años tienes?")
-    service = data.get("¿Cual es el servicio que quieres reservar?")
-    time = data.get("¿A que hora quieres reservar?")
-    date = data.get("¿Cuando quieres agendar la cita?")
+    name = data.get("name")
+    age = data.get("age")
+    service = data.get("service")
+    time = data.get("time")
+    date = data.get("date")
 
     if not name or not age or not service or not time or not date:
         return jsonify({"error": "Missing required fields"}), 400
@@ -61,13 +63,13 @@ def save_reservation():
     db.commit()
 
     # Blockchain record: Register the reservation on the blockchain
-    tx_hash = contract.functions.registerReservation(
-        name,
-        age,
-        service,
-        time,
-        date
-    ).transact({'from': w3.eth.accounts[0]})
+    #tx_hash = contract.functions.registerReservation(
+     #   name,
+      #  age,
+       # service,
+       # time,
+       # date
+    #).transact({'from': w3.eth.accounts[0]})
 
     return jsonify({
         "message": "Reservation saved successfully",
