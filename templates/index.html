@@ -212,7 +212,7 @@
 
         <!-- Servicios -->
         <section id="servicios" class="servicios mt-[80px] xl:mt-[200px] relative z-20">
-            <div class="container mx-auto xl:px-0">
+            <div class="container mx-auto xl:px-0 mb-8">
                 <!-- texto -->
                 <div class="text-center mb-24">
                     <h2 class="servicios__titulo h2 mb-4">Experiencias de bienestar</h2>
@@ -228,7 +228,7 @@
                                 <h3 class="h3">Tratamiento facial</h3>
                                 <p>Limpiar, hidratar y rejuvenecer la piel</p>
                             </div>
-                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                            <button onclick="toggleChat(facial)" class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
                                 <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
                             </button>
                         </div>
@@ -241,7 +241,7 @@
                                 <h3 class="h3">Hidroterapia</h3>
                                 <p>Agua para tratar diversas afecciones y promover la relajación.</p>
                             </div>
-                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                            <button onclick="toggleChat(hidroterapia)" class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
                                 <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
                             </button>
                         </div>
@@ -254,7 +254,7 @@
                                 <h3 class="h3">Masajes</h3>
                                 <p>Terapeuticos, relajantes o deportivos.</p>
                             </div>
-                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                            <button onclick="toggleChat(masajes)" class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
                                 <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
                             </button>
                         </div>
@@ -267,7 +267,7 @@
                                 <h3 class="h3">Aromaterapia</h3>
                                 <p> Los aceites esenciales se extraen de plantas y tienen propiedades terapéuticas.</p>
                             </div>
-                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                            <button onclick="toggleChat(aromaterapia)" class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
                                 <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
                             </button>
                         </div>
@@ -277,36 +277,35 @@
         </section>
         <!-- Boton chatbot  -->
         <button id="chatbot_btn" onclick="toggleChat()" class="btn-primary fixed bottom-5 right-5 z-50 p-4 rounded-full shadow-lg">
-            <i class="ri-flower-line text-white"></i>
+            <i class="ri-flower-line text-accent"></i>
         </button>
         
         <!-- Ventana chatbot  -->
         <div id="chatbot-window"
-            class="fixed bottom-20 right-5 bg-white shadow-lg w-80 h-96 rounded-lg p-4 flex flex-col z-50 hidden">
+            class="fixed bottom-20 right-5 bg-white shadow-lg w-80 h-96 rounded-lg p-4 flex flex-col z-50 mb-1 hidden">
             <div class="flex justify-between items-center border-b border-gray-300 pb-2">
-                <h3 class="text-lg font-semibold">Chatbot</h3>
+                <h3 class="text-lg font-semibold text-primary">Chatbot</h3>
                 <button id="close_chatbot" class="text-gray-500 hover:text-gray-800" onclick="toggleChat()">
                     <i class="ri-close-fill text-xl"></i>
                 </button>
             </div>
             <div class="flex-grow p-4 overflow-y-auto bg-gray-100 rounded-lg mt-2">
-                <div id="chatContent" class="h-96 overflow-y-scroll scroll-smooth">
+                <div id="chatContent" class="h-80 overflow-y-auto scroll-smooth text-sm">
                     <!-- Chat messages will go here -->
                 </div>
             </div>
-            <div class="mt-2">
+            <div class="mt-2 flex flex-row">
                 <input type="text" id="userInput" placeholder="Escribe un mensaje..."
                     class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
                     onkeypress="if(event.key === 'Enter'){ sendMessage(); }">
-                <button onclick="sendMessage()" class="btn-input mt-2 w-full" style="color: white; background-color: rgb(41 47 54);">
+                <button onclick="sendMessage()" class="btn-input mt-2 w-min rounded-lg text-sm p-2" style="color: white; background-color: rgb(41 47 54);">
                     Send
                 </button>
             </div>
         </div>
-        </main>
 
-         <!-- graficas -->
-         <div class="graficas mt-8 xl:mt-20 relative z-20 min-h-screen">
+        <!-- graficas -->
+        <div class="graficas mt-8 xl:mt-20 relative z-20 min-h-screen">
             <div class="container flex flex-row justify-center items-center h-full mx-auto">
                 <button class="btn btn-primary mt-8 mb-8">
                     <a href="https://lookerstudio.google.com/u/0/reporting/05340673-9803-4a57-af80-04fd0f6d0b84/page/DlPDE" target="_blank">Revisar estadísticas</a>
@@ -315,6 +314,9 @@
             </div>
         </div>
         </main>
+
+        </main>
+
 
 
     <!-- footer -->

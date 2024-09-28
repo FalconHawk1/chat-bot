@@ -8,6 +8,23 @@ const questions = [
 
 let questionIndex = 0;
 let answers = {};
+const serviceMessages = {
+    facial: "Un tratamiento facial es una excelente elección para revitalizar tu piel. ¿Te gustaría agendar tu cita?",
+    hidroterapia: "Hidroterapia service selected. Let's gather some details for your booking.",
+    masajes: "You selected a massage session. Let's proceed with the booking details.",
+    aromaterapia: "Aromatherapy service selected. Please provide the details for your reservation."
+};
+
+document.querySelector('#facial').addEventListener('click', () => startChat('facial'));
+document.getElementById('hidroterapia').addEventListener('click', () => startChat('hidroterapia'));
+document.getElementById('masajes').addEventListener('click', () => startChat('masajes'));
+document.getElementById('aromaterapia').addEventListener('click', () => startChat('aromaterapia'));
+
+
+function startChat(service) {
+    toggleChat();
+    showInitialMessage(service);
+};
 
 function toggleChat() {
     const chatBox = document.getElementById('chatBox');
@@ -16,6 +33,13 @@ function toggleChat() {
     if (!chatBox.classList.contains('hidden') && questionIndex === 0) {
         askQuestion();
     }
+}
+
+function showInitialMessage(service) {
+    const chatContent = document.getElementById('chatContent');
+    const message = serviceMessages[service];
+    chatContent.innerHTML += `<div class="bot-message">${message}</div>`;
+    scrollToBottom();
 }
 
 function askQuestion() {
