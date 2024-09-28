@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Hackathon</title>
+    <!-- Link to CSS file in the static folder -->
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">-->
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- SWIPER CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper-bundle.min.css') }}"> 
+</head>
+<body class="bg-gray-100">
+    <!-- header -->
+    <header class="sticky top-0 h-[90px] shadow-xl z-30 bg-white">
+        <div class="container mx-auto flex justify-between h-full items-center">
+            <!-- logo -->
+             <a href="#">
+                <img src="{{ url_for('static', filename='assets/logo.png') }}" height="100px" width="100px" alt="Logo">
+             </a>
+             <!-- nav -->
+              <nav>
+                <!-- nav movil -->
+                 <div class="cursor-pointer lg:hidden" id="nav_trigger_btn">
+                    <i class="ri-menu-4-fill text-4xl text-primary"></i>
+                 </div>
+                <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300"
+                id="nav_menu"
+                >
+                    <li><a href="#">Oasis</a></li>
+                    <li><a href="{{ url_for('home') }}#nosotros">Nosotros</a></li>
+                    <li><a href="{{ url_for('home') }}#experiencias">Experiencias</a></li>
+                    <li><a href="{{ url_for('home') }}#servicios">Servicios</a></li>
+                </ul>
+              </nav>
+        </div>
+    </header>
+        <!-- page wraper -->
+    <main class="max-w-[1920px] mx-auto bg-white overflow-hidden">
+        <!-- grid img -->
+         <div class="xl:bg-grid xl:bg-center xl:bg-repeat-y fixed top-0 bottom-0 left-0 right-0 z-10"></div>
+        <!-- hero -->
+        <section class="hero h-[640px] xl:h-[840px] bg-hero bg-center lg:bg-cover bg-no-repeat bg-fixed xl:rounded-bl-[290px] relative z-20">
+            <div class="container mx-auto h-full flex items-center justify-center xl:justify-start">
+                <!-- texto -->
+                <div class="hero__text w-[567px] flex flex-col items-center text-center xl:text-left lg:items-start">
+                    <h1 class="h1 mb-8">Relájate, reconéctate, rejuvenece.</h1>
+                    <p class="mb-8">Déjate envolver por la serenidad de nuestros tratamientos y descubre la paz que habita en tu interior.</p>
+                    <button id="hero_btn" onclick="toggleChat()" class="btn btn-primary mx-auto xl:mx-0">
+                        Agenda tu cita
+                        <i class="ri-flower-line text-accent"></i>
+                    </button>
+                </div> 
+            </div>
+        </section> 
+
+        <!-- Beneficios -->
+        <section id="beneficios" class="beneficios mt-[80px] xl:mt-[200px] relative z-20">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 gap-12 xl:grid-cols-3">
+                    <!-- beneficio 1 -->
+                     <div class="beneficios__beneficio text-center">
+                        <div class="mb-4">
+                            <i class="ri-empathize-line text-5xl text-accent"></i>
+                        </div>
+                        <h3 class="h3 mb-5">Relajación profunda</h3>
+                        <p class="mb-5 max-w-md mx-auto">Nuestros tratamientos están diseñados para desconectar de la rutina y el estrés diario, proporcionando una relajación profunda que te permitirá renovar tu mente y cuerpo.</p>
+                        <a href="#" class="font-medium flex justify-center gap-2">
+                            Descubre más
+                            <i class="ri-arrow-right-line text-accent"></i>
+                        </a>
+                     </div>
+                     <!-- beneficio 2 -->
+                     <div class="beneficios__beneficio text-center">
+                        <div class="mb-4">
+                            <i class="ri-heart-pulse-line text-5xl text-accent"></i>
+                        </div>
+                        <h3 class="h3 mb-5">Salud física</h3>
+                        <p class="mb-5 max-w-md mx-auto">Nuestras terapias contribuyen a aliviar tensiones musculares, mejorar la circulación sanguínea y reducir dolores, mejorar la calidad del sueño y revitalizar la piel.</p>
+                        <a href="#" class="font-medium flex justify-center gap-2">
+                            Descubre más
+                            <i class="ri-arrow-right-line text-accent"></i>
+                        </a>
+                     </div>
+                     <!-- beneficio 3 -->
+                     <div class="beneficios__beneficio text-center">
+                        <div class="mb-4">
+                            <i class="ri-mental-health-line text-5xl text-accent"></i>
+                        </div>
+                        <h3 class="h3 mb-5">Experiencias sensoriales</h3>
+                        <p class="mb-5 max-w-md mx-auto">Sumérgete en un mundo de sensaciones placenteras gracias a nuestras técnicas de masaje, aromas relajantes y ambientes serenos en experiencias personalizadas.</p>
+                        <a href="#" class="font-medium flex justify-center gap-2">
+                            Descubre más
+                            <i class="ri-arrow-right-line text-accent"></i>
+                        </a>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nosotros -->
+        <section id="nosotros" class="about mt-[80px] xl:mt-[200px] relative z-20">
+            <div class="container mx-auto xl:px-0">
+                <div class="flex flex-col  xl:flex-row text-center xl:text-left justify-between items-center gap-8 xl:gap-[74px]">
+                    <!-- texto -->
+                    <div class="flex-1 order-2 xl:order-none max-w-xl xl:max-w-[410px] flex flex-col
+                    items-center xl:items-start gap-8">
+                        <h2 class="h2">Descubre el placer de desconectar</h2>
+                        <p>
+                            Cada rincón de nuestro spa ha sido diseñado para proporcionarte una experiencia única y personalizada, donde podrás reconectar contigo mismo y recargar tus energías.
+                        </p>
+                        <!-- telefono -->
+                        <div class="flex items-center justify-center xl:justify-start gap-4">
+                            <div class="bg-accent/15 w-[93px] h-[93px] rounded-full flex justify-center items-center">
+                                <i class="ri-phone-fill text-accent text-4xl"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-2xl font-bold ">555 555 5555</div>
+                                <div>Contáctanos</div>
+                            </div>
+                        </div>
+                        <!-- boton -->
+                        <button id="telefono_bnt" onclick="toggleChat()" class="btn btn-primary">
+                            Agenda tu cita
+                            <i class="ri-flower-line text-accent"></i>
+                        </button> 
+                    </div>
+                    <!-- img -->
+                    <div class="about__img order-1 xl:order-none max-w-[453px] mx-auto xl:max-w-none xl:mx-0">
+                        <img src="{{ url_for('static', filename='/assets/proposito/espacioimg.png') }}" alt="espaciorelax">
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiencias -->
+        <section id="experiencias" class="experiencias mt-[80px] xl:mt-[200px] relative z-20">
+            <div class="experiencias__bg container mx-auto bg-accent-secondary rounded-[70px] px-6">
+                <div class="flex flex-col items-center pt-[88px] pb-[110px]">
+                    <h2 class="experiencias__titulo h2 mb-9 text-center">Testimonios de bienestar</h2>
+                    <!-- slider -->
+                     <div class="w-full">
+                        <div class="slider__experiencias swiper h-[400px]">
+                            <div class="swiper-wrapper">
+                                <!-- slide 1 -->
+                                <div class="swiper-slide">
+                                    <!-- item -->
+                                    <div class="experiencias__item w-full max-w-[450px] h-[340px] bg-white rounded-[30px] flex flex-col justify-center p-9 mx-auto">
+                                        <div class="flex mb-6 items-center gap-4">
+                                            <img src="{{ url_for('static', filename='/assets/experiencias/01.png') }}" alt="">
+                                            <div>
+                                                <h3 class="h3">Fernanda Gómez</h3>
+                                            </div>
+                                        </div>
+                                        <p>Después de una semana intensa, encontrar el spa fue mi salvación. El masaje de tejido profundo me dejó renovada y el facial me hizo sentir radiante, con la piel hermosa y suave.</p>
+                                    </div> 
+                                </div>
+                                <!-- slide 2 -->
+                                <div class="swiper-slide">
+                                    <!-- item -->
+                                    <div class="experiencias__item w-full max-w-[450px] h-[340px] bg-white rounded-[30px] flex flex-col justify-center p-9 mx-auto">
+                                        <div class="flex mb-6 items-center gap-4">
+                                            <img src="{{ url_for('static', filename='/assets/experiencias/02.png') }}" alt="">
+                                            <div>
+                                                <h3 class="h3">Camila Moreno</h3>
+                                            </div>
+                                        </div>
+                                        <p>Este spa es mi refugio. Se siente una atmósfera muy tranquila, empiezo a sentir la relajacion y todos los tratamientos corporales me hacen sentir como nueva.</p>
+                                    </div> 
+                                </div>
+                                <!-- slide 3 -->
+                                <div class="swiper-slide">
+                                    <!-- item -->
+                                    <div class="experiencias__item w-full max-w-[450px] h-[340px] bg-white rounded-[30px] flex flex-col justify-center p-9 mx-auto">
+                                        <div class="flex mb-6 items-center gap-4">
+                                            <img src="{{ url_for('static', filename='/assets/experiencias/03.png') }}" alt="">
+                                            <div>
+                                                <h3 class="h3">David López</h3>
+                                            </div>
+                                        </div>
+                                        <p>Los dolores musculares ya no son un problema gracias a los masajes deportivos de este spa. El sauna es el complemento para una recuperación completa.</p>
+                                    </div> 
+                                </div>
+                                <!-- slide 4 -->
+                                <div class="swiper-slide">
+                                    <!-- item -->
+                                    <div class="experiencias__item w-full max-w-[450px] h-[340px] bg-white rounded-[30px] flex flex-col justify-center p-9 mx-auto">
+                                        <div class="flex mb-6 items-center gap-4">
+                                            <img src="{{ url_for('static', filename='/assets/experiencias/04.png') }}" alt="">
+                                            <div>
+                                                <h3 class="h3">Valentina Ospina</h3>
+                                            </div>
+                                        </div>
+                                        <p>Es perfecto, aquí puedo complementar el yoga con la aromaterapia y los masajes relajantes, ahora siempre me siento en un estado de calma total.</p>
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- paginacion -->
+                             <div class="swiper-pagination"></div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section> 
+
+        <!-- Servicios -->
+        <section id="servicios" class="servicios mt-[80px] xl:mt-[200px] relative z-20">
+            <div class="container mx-auto xl:px-0">
+                <!-- texto -->
+                <div class="text-center mb-24">
+                    <h2 class="servicios__titulo h2 mb-4">Experiencias de bienestar</h2>
+                    <p class="servicios__subtitulo max-w-3xl mx-auto">Cada tratamiento en nuestro spa es una experiencia personalizada, diseñada para revitalizar tu cuerpo y mente. Te ofrecemos un escape del estrés diario y te brindamos la oportunidad de reconectar contigo mismo.</p>
+                </div>
+                <!-- grid -->
+                <div class="servicios__grid grid grid-cols-1 xl:grid-cols-2 gap-x-[104px] gap-y-[56px]">
+                    <!-- item -->
+                    <div class="w-full max-w-[548px] h-full mx-auto">
+                        <img class="mb-6" src="{{ url_for('static', filename='/assets/servicios/facial.jpg') }}" alt="">
+                        <div class="flex justify-between items-center w-full">
+                            <div>
+                                <h3 class="h3">Tratamiento facial</h3>
+                                <p>Limpiar, hidratar y rejuvenecer la piel</p>
+                            </div>
+                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                                <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- item -->
+                    <div class="w-full max-w-[548px] h-full mx-auto">
+                        <img class="mb-6" src="{{ url_for('static', filename='/assets/servicios/hidro.jpg') }}" alt="">
+                        <div class="flex justify-between items-center w-full">
+                            <div>
+                                <h3 class="h3">Hidroterapia</h3>
+                                <p>Agua para tratar diversas afecciones y promover la relajación.</p>
+                            </div>
+                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                                <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- item -->
+                    <div class="w-full max-w-[548px] h-full mx-auto">
+                        <img class="mb-6" src="{{ url_for('static', filename='/assets/servicios/masaje.jpg') }}" alt="">
+                        <div class="flex justify-between items-center w-full">
+                            <div>
+                                <h3 class="h3">Masajes</h3>
+                                <p>Terapeuticos, relajantes o deportivos.</p>
+                            </div>
+                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                                <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- item -->
+                    <div class="w-full max-w-[548px] h-full mx-auto">
+                        <img class="mb-6" src="{{ url_for('static', filename='/assets/servicios/aroma.jpg') }}" alt="">
+                        <div class="flex justify-between items-center w-full">
+                            <div>
+                                <h3 class="h3">Aromaterapia</h3>
+                                <p> Los aceites esenciales se extraen de plantas y tienen propiedades terapéuticas.</p>
+                            </div>
+                            <button class="bg-accent-secondary hover:bg-accent/20 w-[70px] h-[70px] rounded-full">
+                                <i class="ri-arrow-right-s-line text-3xl text-primary"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </section>
+        <!-- Boton chatbot  -->
+        <button id="chatbot_btn" onclick="toggleChat()" class="btn-primary fixed bottom-5 right-5 z-50 p-4 rounded-full shadow-lg">
+            <i class="ri-flower-line text-white"></i>
+        </button>
+        
+        <!-- Ventana chatbot  -->
+        <div id="chatbot-window"
+            class="fixed bottom-20 right-5 bg-white shadow-lg w-80 h-96 rounded-lg p-4 flex flex-col z-50 hidden">
+            <div class="flex justify-between items-center border-b border-gray-300 pb-2">
+                <h3 class="text-lg font-semibold">Chatbot</h3>
+                <button id="close_chatbot" class="text-gray-500 hover:text-gray-800" onclick="toggleChat()">
+                    <i class="ri-close-fill text-xl"></i>
+                </button>
+            </div>
+            <div class="flex-grow p-4 overflow-y-auto bg-gray-100 rounded-lg mt-2">
+                <div id="chatContent">
+                    <!-- Chat messages will go here -->
+                </div>
+            </div>
+            <div class="mt-2">
+                <input type="text" id="userInput" placeholder="Escribe un mensaje..."
+                    class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg">
+                <button onclick="sendMessage()" class="btn-input mt-2 w-full" style="color: white; background-color: rgb(41 47 54);">
+                    Send
+                </button>
+            </div>
+        </div>
+        </main>
+
+    <!-- footer -->
+    <footer class="footer p-1 mt-[75px] xl:mt-[150px] relative z-20">
+        <div class="p-1 flex justify-center items-center">
+            <p class="text-sm">Todos los derechos reservados. Oasis Spa. 2024.</p>
+        </div>
+    </footer> 
+
+    <!-- Link to JavaScript file in the static folder -->
+    <!--<script src="{{ url_for('static', filename='scripts/scripts.js') }}"></script>-->
+    <!-- scroll reveal -->
+    <script src="{{ url_for('static', filename='js/scrollreveal.min.js') }}"></script>
+    <!-- swiper -->
+    <script src="{{ url_for('static', filename='js/swiper-bundle.min.js') }}"></script>
+    <!-- main js -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script> 
+</body>
+</html>
